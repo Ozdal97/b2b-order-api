@@ -44,7 +44,7 @@ class ProductController extends Controller
             return response()->json([
                 'message' => 'Yetkisiz Erişim',
                 'status'  => false,
-            ], 401);
+            ], 403);
         }
 
         // Gelecek verileri doğrula

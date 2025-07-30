@@ -68,7 +68,7 @@ class OrderController extends Controller
         return response()->json([
             'order'  => $orderService->orders,
             'status' => true,
-        ]);
+        ],201);
     }
 
     /**
@@ -84,12 +84,12 @@ class OrderController extends Controller
         PermissionService $permissionService,
         OrderService $orderService
     ) {
-        // Yalnızca admin veya sipariş sahibi erişebilmeli
+        // Yalnızca admin erişebilmeli
         if (! $permissionService->hasPermission('order_update')) {
             return response()->json([
                 'message' => 'Yetkisiz Erişim',
                 'status'  => false,
-            ], 401);
+            ], 404);
         }
 
         // Servis aracılığıyla siparişi al
